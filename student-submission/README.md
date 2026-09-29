@@ -221,7 +221,7 @@ Best regards,
 
 ## Safety Checklist
 - [x] I used fictional names and dummy data only, no real work data.
-- [x] No real passwords, IDs, or confidential information were pasted into the AI tool.
+- [x] No real passwords, IDs, or confidential information were pasted into the AI tool (the password in Input 2 is fake).
 - [x] I tested the prompt with notes that include a password (Input 2), and the AI hid it as [REDACTED].
 - [x] The prompt tells the AI not to invent information and to write TBD when something is missing.
 - [x] I checked the names, numbers, and dates in the output against the original notes.
