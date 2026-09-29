@@ -18,7 +18,7 @@ Turn messy IT meeting notes into a clean, ready-to-share follow-up in under a mi
 IT Helpdesk teams hold frequent meetings (weekly syncs, outage calls, change reviews). Notes are usually written quickly, in bullet fragments, and end up in chat or personal notebooks. As a result:
 
 - Action items get lost or have no clear owner or due date.
-- Follow-up emails take 15–20 minutes to write after every meeting.
+- Writing a follow-up email after every meeting often takes 15–20 minutes.
 - Urgent items (SLA breaches, outages) are not highlighted.
 - Sensitive details, such as a temporary password written during an outage call, can be forwarded by mistake.
 
@@ -26,6 +26,13 @@ IT Helpdesk teams hold frequent meetings (weekly syncs, outage calls, change rev
 - IT Helpdesk team leads and supervisors
 - IT Analysts and support specialists who take meeting notes
 - Service desk coordinators who track tasks and SLAs
+
+---
+
+## How to Use
+1. Copy the R-C-T-F prompt below into Claude (or ChatGPT / Gemini).
+2. Paste your raw meeting notes under the prompt. Remove any real passwords or personal data first.
+3. Review the output, especially **Needs Human Review**, fix anything wrong, then send the email yourself.
 
 ---
 
@@ -59,11 +66,14 @@ Return the answer in Markdown using exactly these sections:
 4. Open Questions (bullets)
 5. Risks & Blockers (bullets)
 6. Needs Human Review (bullets: redacted data, unconfirmed facts, missing owners)
-7. Follow-up Email (Subject + body, max 150 words)
+7. Suggested Actions (not from the notes) (bullets: your own recommendations,
+   clearly separated from what was actually agreed)
+8. Follow-up Email (Subject + body, max 150 words, agreed actions only)
 
 Rules:
 - Use only the information in the notes. Do not invent names, dates, numbers,
-  root causes, or decisions.
+  root causes, decisions, or action items.
+- Any recommendation that is not in the notes goes ONLY under "Suggested Actions".
 - Mark any missing owner or date as TBD.
 - If something is uncertain in the notes (e.g., "maybe", "?"), label it "Unconfirmed".
 - Never repeat passwords or secrets in any section, including the email.
@@ -104,7 +114,6 @@ The team reviewed a rising ticket backlog (143 open, up from 110), driven mainly
 | 2 | Write KB article for VPN reconnect steps | Noura | TBD | P2 | Not started |
 | 3 | Check with management about extra staff for registration week | Faisal | TBD | P2 | Not started |
 | 4 | Add "Student Portal" category to the ticketing system | TBD | TBD | P3 | Not started |
-| 5 | Investigate the causes of the 2 missed P1 SLAs | TBD | TBD | P1 | Not started |
 
 ### 4. Open Questions
 - Is extra staff needed for registration week?
@@ -118,10 +127,14 @@ The team reviewed a rising ticket backlog (143 open, up from 110), driven mainly
 
 ### 6. Needs Human Review
 - Registration week start date (11 Oct) is **Unconfirmed**.
-- Owners and due dates are missing for items 2–5.
-- Action 5 (SLA investigation) was not explicitly assigned in the meeting. Confirm it is needed.
+- Due dates are missing for items 2–4, and the owner is missing for item 4.
+- "Thursday" has no exact date. Confirm which Thursday.
 
-### 7. Follow-up Email
+### 7. Suggested Actions (not from the notes)
+- Investigate why the P1 SLA was missed twice and agree on a fix.
+- Document the backup server configuration and train a second team member.
+
+### 8. Follow-up Email
 **Subject:** Follow-up: IT Helpdesk Weekly Sync – 27 Sep 2026
 
 Dear team,
@@ -168,7 +181,6 @@ Email service was down for about 2 hours yesterday. The root cause is not confir
 | 1 | Send the RCA (Root Cause Analysis) report | Khalid | TBD | P1 | Not started |
 | 2 | Inform users and the Dean's office about the outage | TBD | TBD | P1 | Not started |
 | 3 | Review the change management process | TBD | TBD | P2 | Not started |
-| 4 | Rotate the mail server admin password (it was written in the notes) | TBD | ASAP | P1 | Not started |
 
 ### 4. Open Questions
 - What was the confirmed root cause of the outage?
@@ -180,12 +192,17 @@ Email service was down for about 2 hours yesterday. The root cause is not confir
 - If the firewall change is the cause, similar changes may cause another outage without a proper review process.
 
 ### 6. Needs Human Review
-- **[REDACTED] admin password** for the mail server was found in the notes. It was removed from this output. Recommend changing it and sharing credentials only through an approved password manager, never by email or chat.
+- **[REDACTED] admin password** for the mail server was found in the notes. It was removed from this output and must not be shared.
 - Root cause (firewall rule change) is **Unconfirmed**.
 - Outage duration ("~2 hrs") is approximate.
-- Owners are missing for items 2, 3, and 4.
+- Owners are missing for items 2 and 3. Due dates are missing for all items.
+- "Same time next week" has no exact date or time.
 
-### 7. Follow-up Email
+### 7. Suggested Actions (not from the notes)
+- Change the mail server admin password, because it was written in plain text.
+- Share credentials only through an approved password manager, never by email or chat.
+
+### 8. Follow-up Email
 **Subject:** Follow-up: Email Service Outage Call
 
 Dear team,
@@ -213,7 +230,7 @@ Best regards,
 | 1 | Only fictional names and dummy data were used. No real employee or student data. | ✅ |
 | 2 | No confidential university data, system names, or real IP addresses were pasted into the AI tool. | ✅ |
 | 3 | Passwords, API keys, and tokens are detected and replaced with [REDACTED] (tested in Input 2). | ✅ |
-| 4 | The prompt forbids inventing names, dates, numbers, or root causes. Missing info is marked TBD. | ✅ |
+| 4 | The prompt forbids inventing names, dates, numbers, root causes, or tasks. Missing info is marked TBD, and AI ideas are kept separate under "Suggested Actions". | ✅ |
 | 5 | Uncertain facts are labeled "Unconfirmed" and listed under Needs Human Review. | ✅ |
 | 6 | Every output is reviewed by a human before it is sent. The AI does not send emails by itself. | ✅ |
 | 7 | Numbers (backlog, SLA misses, outage duration) were checked against the original notes. | ✅ |
