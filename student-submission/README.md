@@ -1,7 +1,7 @@
 # IT Helpdesk Meeting Follow-up Assistant
 
-> Final individual project for the **Generative AI for Productivity** program (SDAIA Academy).
-> Tool used: **Claude**. All names and data in this project are fictional.
+Final project for the Generative AI for Productivity course (SDAIA Academy).
+Tool used: Claude. All names and data in this project are fictional.
 
 ---
 
@@ -12,27 +12,25 @@
 **1. Meeting Follow-up Assistant**, customized for an IT Helpdesk team.
 
 ## Project Goal
-Turn messy IT meeting notes into a clean, ready-to-share follow-up in under a minute: summary, decisions, action items with owners and priority, open questions, risks, and a follow-up email. It also catches sensitive data (passwords, IPs, personal info) that should never be shared.
+Help the IT Helpdesk team turn quick meeting notes into a clear follow-up: a summary, a task list with owners, and a follow-up email. The assistant should also hide any passwords or sensitive data found in the notes.
 
 ## Problem Statement
-IT Helpdesk teams hold frequent meetings (weekly syncs, outage calls, change reviews). Notes are usually written quickly, in bullet fragments, and end up in chat or personal notebooks. As a result:
+In our IT team we have many meetings, like weekly meetings and calls after a system outage. The notes are usually short and messy. Because of this:
 
-- Action items get lost or have no clear owner or due date.
-- Writing a follow-up email after every meeting often takes 15–20 minutes.
-- Urgent items (SLA breaches, outages) are not highlighted.
-- Sensitive details, such as a temporary password written during an outage call, can be forwarded by mistake.
+- Some tasks are forgotten or have no owner.
+- Writing the follow-up email takes time, so sometimes it is not sent.
+- Sometimes notes include sensitive data, like a temporary password, and it can be shared by mistake.
 
 ## Target Users
-- IT Helpdesk team leads and supervisors
-- IT Analysts and support specialists who take meeting notes
-- Service desk coordinators who track tasks and SLAs
+- IT Helpdesk team leads
+- IT staff who write meeting notes and follow up on tasks
 
 ---
 
 ## How to Use
-1. Copy the R-C-T-F prompt below into Claude (or ChatGPT / Gemini).
-2. Paste your raw meeting notes under the prompt. Remove any real passwords or personal data first.
-3. Review the output, especially **Needs Human Review**, fix anything wrong, then send the email yourself.
+1. Copy the prompt below into Claude (or ChatGPT / Gemini).
+2. Paste the meeting notes under it. Remove any real passwords or personal data first.
+3. Review the output before sending the email.
 
 ---
 
@@ -147,7 +145,7 @@ Agreed actions:
 - Faisal will check with management about extra staff for registration week.
 - We will add a new "Student Portal" ticket category.
 
-Please note that the P1 SLA was missed twice this week, and backup server knowledge should be shared with more than one team member.
+Please note that the P1 SLA was missed twice this week. We also noted that only Majed currently knows the backup server configuration.
 
 Best regards,
 [Your Name]
@@ -219,31 +217,28 @@ Our next call is at the same time next week.
 Best regards,
 [Your Name]
 
-> Note: The admin password from the original notes was intentionally **not** included in this email.
-
 ---
 
 ## Safety Checklist
-
-| # | Check | Done |
-|---|---|:---:|
-| 1 | Only fictional names and dummy data were used. No real employee or student data. | ✅ |
-| 2 | No confidential university data, system names, or real IP addresses were pasted into the AI tool. | ✅ |
-| 3 | Passwords, API keys, and tokens are detected and replaced with [REDACTED] (tested in Input 2). | ✅ |
-| 4 | The prompt forbids inventing names, dates, numbers, root causes, or tasks. Missing info is marked TBD, and AI ideas are kept separate under "Suggested Actions". | ✅ |
-| 5 | Uncertain facts are labeled "Unconfirmed" and listed under Needs Human Review. | ✅ |
-| 6 | Every output is reviewed by a human before it is sent. The AI does not send emails by itself. | ✅ |
-| 7 | Numbers (backlog, SLA misses, outage duration) were checked against the original notes. | ✅ |
-| 8 | AI assists with drafting only. Priorities and decisions are confirmed by the team lead. | ✅ |
+- [x] I used fictional names and dummy data only, no real work data.
+- [x] No real passwords, IDs, or confidential information were pasted into the AI tool.
+- [x] I tested the prompt with notes that include a password (Input 2), and the AI hid it as [REDACTED].
+- [x] The prompt tells the AI not to invent information and to write TBD when something is missing.
+- [x] I checked the names, numbers, and dates in the output against the original notes.
+- [x] A person must review the output before sending it. The AI does not send anything by itself.
 
 ---
 
 ## Reflection
 
-**What I learned:** A structured R-C-T-F prompt with clear rules gives consistent and reliable output. Adding rules such as "use TBD" and "do not invent" made the AI much more trustworthy for work tasks.
+**What I learned:**
+I learned how to write a prompt using R-C-T-F. Adding clear rules, like "do not invent" and "use TBD", made the output more accurate.
 
-**How AI helped me:** Turning messy meeting notes into a summary, action table, and email took seconds instead of 15–20 minutes. It also highlighted missing owners and risks I might have missed.
+**How AI helped me:**
+It turned messy notes into a clear summary, task table, and email in a few seconds. It also showed me missing owners and dates.
 
-**What I checked:** I compared every name, number, and date in the output with the original notes, and I tested the assistant with notes containing a password to make sure it redacts sensitive data.
+**What I checked:**
+I compared the output with the original notes and made sure the password in Input 2 did not appear in the output.
 
-**What I would improve next:** Save the prompt as a Claude Project so the team can reuse it, connect it to the ticketing system to create tasks automatically (with human approval), and add an Arabic version of the follow-up email.
+**What I would improve next:**
+I would save the prompt in a Claude Project so my team can reuse it, and add an Arabic version of the email.
